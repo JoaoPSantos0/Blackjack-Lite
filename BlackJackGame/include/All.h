@@ -2,7 +2,9 @@
 #define _ALL_H
 
 #include <unistd.h>
-
+#include "Cartas.h"
+#include "Interface.h"
+#include "Stack.h"
 
 #include "Interface.h"
 #include <SDL2/SDL.h>

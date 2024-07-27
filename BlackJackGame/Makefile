@@ -12,7 +12,7 @@ APP = Main
 
 all: _src clean_apps _apps
 
-_src: $(OBJ)/Interface.o 
+_src: $(OBJ)/Interface.o $(OBJ)/Cartas.o $(OBJ)/Stack.o
 
 clean_apps:
 	rm -rf $(BIN)/*
