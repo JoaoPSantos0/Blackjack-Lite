@@ -1,3 +1,6 @@
+#ifndef _PLAYER_H_
+#define _PLAYER_H_
+
 #include "All.h"
 
 typedef struct {
@@ -13,3 +16,5 @@ void stay();
 void dividirAposta();
 void load_texture_cartas_player();
 void atualizarCartasPlayer();
+
+#endif// _PLAYER_H_

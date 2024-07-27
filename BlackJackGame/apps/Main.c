@@ -6,7 +6,7 @@
 //SDL_RenderCopy(renderer, textura, NULL, &algo);
 
 void carregarGame(){//inicializar as texturas;
-
+    //distancias do deck de compra;
     const int border_distance_x = 20;
     const int border_distance_y = 350;
     const int distance_between_cards_y = 10;
@@ -20,6 +20,21 @@ void carregarGame(){//inicializar as texturas;
     deckCompra.h = height_card;
     deckCompra.x = x;
     deckCompra.y = y;
+    //distancia da cartas do player;
+
+    const int border_distanceX = 300;
+    const int border_distanceY = 300;
+    int X1 = border_distanceX;
+    int Y1 = border_distance_y;
+
+    for(int i = 0; i<2; i++){
+        cartasPlayer[i].h = height_card;
+        cartasPlayer[i].w = width_card;
+        cartasPlayer[i].x = X1;
+        cartasPlayer[i].y = Y1;
+        X1 += width_card + 20;
+    }
+
     load_texture_deck();
     load_texture_cartas_player();
     criar_deck();
@@ -40,7 +55,7 @@ int main(){
         SDL_RenderClear(render);
        // SDL_RenderPresent(render);
         atualizarInterface();
-        
+        atualizarCartasPlayer();
         while(SDL_PollEvent(&e) != 0){
             if(e.type == SDL_QUIT){
                 quit = true;

@@ -1,3 +1,5 @@
+#ifndef _STACK_H_
+#define _STACK_H_
 
 #include "Cartas.h"
 
@@ -19,3 +21,5 @@ void renderizar();
 
 Stack * push(Stack * stack, Card *card);
 Card * pop(Stack * stack);
+
+#endif
