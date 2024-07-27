@@ -5,6 +5,7 @@
 #include "Cartas.h"
 #include "Interface.h"
 #include "Stack.h"
+#include "Player.h"
 
 #include "Interface.h"
 #include <SDL2/SDL.h>

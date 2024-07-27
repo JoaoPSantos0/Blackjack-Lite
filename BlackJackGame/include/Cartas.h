@@ -17,11 +17,11 @@ typedef struct card{
 }Card;
 
 enum naipe{
-    PAUS = 1, ESPADA = 2, COPAS = 3, OURO = 4
+    PAUS = 0, ESPADA = 1, COPAS = 2, OURO = 3
 };
 
 SDL_Texture * texture_cards[NAIPE_CARTA][TIPOS_CARTAS+1]; 
-SDL_Texture * texture_naipe[NAIPE_CARTA];
+SDL_Texture * texture_player_cards[2];
 SDL_Texture * texture_baralho;
 SDL_Texture * texture_background;
 
