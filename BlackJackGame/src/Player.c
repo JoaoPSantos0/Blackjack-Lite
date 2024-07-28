@@ -3,6 +3,7 @@
 void receberCartas(Player *p, Stack *deck){
     for(int i = 0; i<2; i++){
         Card *aux = pop(deck);
+        p->player_cards[i].numero = aux->numero;
         p->player_cards[i].naipe = aux->naipe;
         p->player_cards[i].turn = aux->turn;
         p->player_cards[i].valor = aux->valor;
@@ -19,12 +20,14 @@ void receberCartasDealer(Player *p, Stack *deck){
         if(i == 1){
             p->player_cards[i].turn = aux->turn;
             }
+        p->player_cards[i].numero = aux->numero;
         p->player_cards[i].valor = aux->valor;
         p->player_cards[i].rect.x = aux->rect.x;
         p->player_cards[i].rect.y = aux->rect.y;
         p->player_cards[i].rect.h = aux->rect.h;
         p->player_cards[i].rect.w = aux->rect.w;
     }
+    p->soma = p->player_cards[0].valor + p->player_cards[0].valor;
 }
 
 
@@ -70,4 +73,12 @@ void atualizarCartasDealer(){
         SDL_RenderCopy(render, texture_cards[naipe][valor], NULL, &dealer.player_cards[i].rect);
         }
     }
+}
+
+int somaCartas(Player play){
+    printf("%d %d\n", play.player_cards[0].numero ,play.player_cards[1].numero);
+    
+    play.soma = play.player_cards[0].numero + play.player_cards[1].numero;
+    int soma = play.soma;
+    return soma;
 }

@@ -2,6 +2,9 @@
 
 bool InicializarSDL(){
     SDL_Init(SDL_INIT_VIDEO);
+    if(TTF_Init()==-1){
+        return false;
+    }
     window = SDL_CreateWindow("BlackJack", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1700, 900, SDL_WINDOW_SHOWN);
     if(!window){
         printf("Erro %s\n",SDL_GetError());
@@ -33,6 +36,24 @@ SDL_Texture* carregarTextura(const char* image_path){
 
     return texture;
 
+}
+
+void RenderText(const char *text, SDL_Texture* textureFont, SDL_Rect rectFont){
+    SDL_Color textColor = {0,0,0};
+    SDL_Surface *textSurface = TTF_RenderText_Solid(font, text, textColor);
+    textureFont = SDL_CreateTextureFromSurface(render, textSurface);
+    rectFont.w = textSurface->w;
+    rectFont.h = textSurface->h;
+    rectFont.x = (SCREEN_WIDTH - rectFont.w)/2;
+
+    SDL_FreeSurface(textSurface);
+}
+
+void RenderSaldoPlayer(){
+    saldoPlayerRect.y = SCREEN_HEIGHT/2 -30;
+
+    RenderText("Saldo:", SaldoPlayer, saldoPlayerRect);
+    SDL_RenderCopy(render, SaldoPlayer, NULL, &saldoPlayerRect);
 }
 
 

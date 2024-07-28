@@ -11,7 +11,7 @@ bool taClicando(SDL_Rect * tam){
 
 void cliqueiManter(){
     if(taClicando(&botaoManter)){
-        dealer.player_cards[1].turn = true;
+        dealer.player_cards[1].turn = false;
     }
     
 }

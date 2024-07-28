@@ -19,6 +19,13 @@ void criar_deck(){
             deck[cont].turn = true;
             deck[cont].naipe = i;
             deck[cont].valor = j;
+            if(j>=10){
+                deck[cont].numero = 10;
+            }
+            else{
+                deck[cont].numero = j;
+            }
+            
             cont++;
         }
     }

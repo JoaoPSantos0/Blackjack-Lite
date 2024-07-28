@@ -62,6 +62,12 @@ void carregarGame(){//inicializar as texturas;
     botaoManter.x = bX +200;
     botaoManter.y = bY;
 
+    //Carregar texto saldo
+    saldoPlayerRect.h = 300;
+    saldoPlayerRect.w = 100;
+    saldoPlayerRect.x = X1 + 200;
+    saldoPlayerRect.y = Y1;
+
     load_texture_bot();
     load_texture_deck();
     load_texture_cartas_player();
@@ -80,6 +86,7 @@ void carregarGame(){//inicializar as texturas;
     deck_compra.coor_pilha.h = deckCompra.h;
     receberCartasDealer(&dealer, &deck_compra);
     receberCartas(&player, &deck_compra); 
+    printf("%d\n", somaCartas(player));
 
 }
 
@@ -100,6 +107,7 @@ int main(){
         //atualizarInterface();
 
         while(SDL_PollEvent(&e) != 0){
+            SDL_GetMouseState(&mouseX, &mouseY);
             if(e.type == SDL_QUIT){
                 quit = true;
             }

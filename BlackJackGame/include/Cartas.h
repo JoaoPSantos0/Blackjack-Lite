@@ -13,8 +13,11 @@ typedef struct card{
     SDL_Rect rect;
     int naipe;
     int valor;
+    int numero;
     bool turn;
 }Card;
+
+
 
 enum naipe{
     PAUS = 0, ESPADA = 1, COPAS = 2, OURO = 3
@@ -26,6 +29,9 @@ SDL_Texture * texture_baralho;
 SDL_Texture * texture_background;
 SDL_Texture * botao_Comprar;
 SDL_Texture * botao_Manter;
+SDL_Texture * textureFont;
+SDL_Texture * SaldoPlayer;
+SDL_Texture * SomaCartasPlayer;
 
 char caminho_imagens[NAIPE_CARTA][TIPOS_CARTAS + 1][50] = {
 
@@ -42,6 +48,9 @@ SDL_Rect cartasDealer[2];
 SDL_Rect cartasPlayer[2];
 SDL_Rect botaoCompra;
 SDL_Rect botaoManter;
+SDL_Rect rectFont;
+SDL_Rect saldoPlayerRect;
+SDL_Rect somaCartasRect;
 
 void criar_deck();
 void embaralhar(Card arr[]);
