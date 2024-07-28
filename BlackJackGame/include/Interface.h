@@ -35,7 +35,6 @@ const int FONT_SIZE = 28;
 
 char text[50];
 int saldoIni = 1000;
-//snprintf(text, 50, "Saldo: %d",saldoIni);
 
 TTF_Font * font = NULL;
 

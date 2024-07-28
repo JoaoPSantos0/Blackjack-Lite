@@ -15,4 +15,9 @@ void cliqueiManter(){
     }
     
 }
+void cliqueiComprar(){
+    if(taClicando(&botaoCompra)){
+        
+    }
+}
 

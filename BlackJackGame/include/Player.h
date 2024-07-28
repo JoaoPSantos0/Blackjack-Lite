@@ -6,6 +6,7 @@
 typedef struct {
     Card player_cards[2];
     double saldo;
+    int tam;
     int soma;
 }Player;
 
@@ -19,6 +20,7 @@ void receberCartas(Player *player, Stack * deck);
 void receberCartasDealer(Player *p, Stack *deck);
 void dobrarAposta();
 int somaCartas(Player play);
+int somaCartasDealer(Player deal);
 void load_texture_cartas_player();
 void atualizarCartasPlayer();
 void atualizarCartasDealer();

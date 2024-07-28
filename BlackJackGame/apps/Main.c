@@ -87,6 +87,7 @@ void carregarGame(){//inicializar as texturas;
     receberCartasDealer(&dealer, &deck_compra);
     receberCartas(&player, &deck_compra); 
     printf("%d\n", somaCartas(player));
+    printf("%d\n", somaCartasDealer(dealer));
 
 }
 
@@ -114,14 +115,24 @@ int main(){
             
             if(SDL_MOUSEBUTTONDOWN == e.type){
                 clicked = true;
-                printf("Cliquei\n");
+                //printf("Cliquei\n");
             }
         }
         atualizarInterface();
         if(clicked){
             cliqueiManter();
             clicked = false;
+            if(somaCartas(player)>somaCartasDealer(dealer)){
+                printf("Voce ganhou\n");
+                atualizar_tela_ganhou()
+            }
+            else {
+                //printf("%d < %d\n", somaCartas);
+                atualizar_tela_perdeu();
+                printf("Voce perde\n");
+                }
         }
+
         SDL_RenderPresent(render);
         SDL_Delay(3);
     }

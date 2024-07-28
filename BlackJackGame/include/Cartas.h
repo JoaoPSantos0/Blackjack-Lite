@@ -1,7 +1,7 @@
 #ifndef _CARTAS_H_
 #define _CARTAS_H_
 
-#include "Interface.h"
+#include "All.h"
 #define NAIPE_CARTA 4
 #define TIPOS_CARTAS 13
 #define TOTAL_CARTAS 52
@@ -32,6 +32,10 @@ SDL_Texture * botao_Manter;
 SDL_Texture * textureFont;
 SDL_Texture * SaldoPlayer;
 SDL_Texture * SomaCartasPlayer;
+SDL_Texture * carta_Comprada;
+SDL_Texture * youLose;
+SDL_Texture * youWin;
+SDL_Texture * playAgain;
 
 char caminho_imagens[NAIPE_CARTA][TIPOS_CARTAS + 1][50] = {
 
@@ -51,13 +55,22 @@ SDL_Rect botaoManter;
 SDL_Rect rectFont;
 SDL_Rect saldoPlayerRect;
 SDL_Rect somaCartasRect;
+SDL_Rect cartaComprada;
+SDL_Rect you_lose;
+SDL_Rect you_win;
+SDL_Rect play_again;
 
 void criar_deck();
 void embaralhar(Card arr[]);
+void load_texture_lose();
+void load_texture_win();
 void load_texture_naipes();
 void load_texture_deck();
 void load_texture_cartas();
+Card * comprarCarta(Stack * deck);
 void atualizarInterface();
 void load_texture_bot();
 void atualizarBotoes();
+void atualizar_tela_perdeu();
+void atualizar_tela_ganhou();
 #endif//_CARTAS_H_

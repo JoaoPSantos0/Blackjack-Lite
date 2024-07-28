@@ -38,8 +38,9 @@ SDL_Texture* carregarTextura(const char* image_path){
 
 }
 
-void RenderText(const char *text, SDL_Texture* textureFont, SDL_Rect rectFont){
+/* void RenderText(const char *text, SDL_Texture* textureFont, SDL_Rect rectFont){
     SDL_Color textColor = {0,0,0};
+    snprintf(text, 50, "Saldo: %d",saldoIni);
     SDL_Surface *textSurface = TTF_RenderText_Solid(font, text, textColor);
     textureFont = SDL_CreateTextureFromSurface(render, textSurface);
     rectFont.w = textSurface->w;
@@ -54,6 +55,6 @@ void RenderSaldoPlayer(){
 
     RenderText("Saldo:", SaldoPlayer, saldoPlayerRect);
     SDL_RenderCopy(render, SaldoPlayer, NULL, &saldoPlayerRect);
-}
+} */
 
 

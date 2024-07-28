@@ -52,4 +52,29 @@ void atualizarInterface(){
     atualizarDeckCompra();
 }
 
+ Card * comprarCarta(Stack *deck){
+    Card * aux = pop(deck);
+    return aux;
+}
+
+void load_texture_lose(){
+    youLose = carregarTextura("imagens/Background/Youlose.png");
+    playAgain = carregarTextura("imagens/Background/playagain.png");
+}
+void load_texture_win(){
+    youWin = carregarTextura("imagens/Background/youwin.png");
+    playAgain = carregarTextura("imagens/Background/playagain.png");
+}
+
+void atualizar_tela_perdeu(){
+    SDL_RenderCopy(render, youLose, NULL, &you_lose);
+    SDL_RenderCopy(render, playAgain, NULL, &play_again);
+}
+
+void atualizar_tela_ganhou(){
+    SDL_RenderCopy(render, youWin, NULL, &you_win);
+    SDL_RenderCopy(render, playAgain, NULL, &play_again);
+    
+}
+ 
 

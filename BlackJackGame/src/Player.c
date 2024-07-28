@@ -1,5 +1,6 @@
 #include "Player.h"
 
+
 void receberCartas(Player *p, Stack *deck){
     for(int i = 0; i<2; i++){
         Card *aux = pop(deck);
@@ -82,3 +83,10 @@ int somaCartas(Player play){
     int soma = play.soma;
     return soma;
 }
+int somaCartasDealer(Player deal){
+    printf("%d %d\n", deal.player_cards[0].numero , deal.player_cards[1].numero);
+    deal.soma = deal.player_cards[0].numero + deal.player_cards[1].numero;
+    int soma = deal.soma;
+    return soma;
+}
+

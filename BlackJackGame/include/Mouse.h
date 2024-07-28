@@ -10,6 +10,8 @@ Stack mouse_list;
 
 void cliqueiManter();
 
+void cliqueiComprar();
+
 bool taClicando(SDL_Rect* pos);
 
 #endif//_MOUSE_H_
