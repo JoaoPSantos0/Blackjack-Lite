@@ -1,7 +1,7 @@
 #ifndef _CARTAS_H_
 #define _CARTAS_H_
 
-#include "All.h"
+#include "Interface.h"
 #define NAIPE_CARTA 4
 #define TIPOS_CARTAS 13
 #define TOTAL_CARTAS 52
@@ -67,7 +67,6 @@ void load_texture_win();
 void load_texture_naipes();
 void load_texture_deck();
 void load_texture_cartas();
-Card * comprarCarta(Stack * deck);
 void atualizarInterface();
 void load_texture_bot();
 void atualizarBotoes();

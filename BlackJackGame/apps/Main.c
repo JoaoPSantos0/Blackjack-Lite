@@ -62,11 +62,28 @@ void carregarGame(){//inicializar as texturas;
     botaoManter.x = bX +200;
     botaoManter.y = bY;
 
-    //Carregar texto saldo
+    //Tela de vc perdeu
+
+    you_lose.h = 400;
+    you_lose.w = 400;
+    you_lose.x = 400;
+    you_lose.y = 400;
+
+    play_again.h = 200;
+    play_again.w = 200;
+    play_again.x = 200;
+    play_again.y = 200;
+
+    you_win.h = 400;
+    you_win.w = 400;
+    you_win.x = 400;
+    you_win.y = 400;
+    
+    /* //Carregar texto saldo
     saldoPlayerRect.h = 300;
     saldoPlayerRect.w = 100;
     saldoPlayerRect.x = X1 + 200;
-    saldoPlayerRect.y = Y1;
+    saldoPlayerRect.y = Y1; */
 
     load_texture_bot();
     load_texture_deck();
@@ -124,7 +141,7 @@ int main(){
             clicked = false;
             if(somaCartas(player)>somaCartasDealer(dealer)){
                 printf("Voce ganhou\n");
-                atualizar_tela_ganhou()
+                atualizar_tela_ganhou();
             }
             else {
                 //printf("%d < %d\n", somaCartas);

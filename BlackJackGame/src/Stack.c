@@ -56,3 +56,8 @@ void atualizarDeckCompra(){
 
     SDL_RenderCopy(render, texture_baralho, NULL, &deck_compra.top->c->rect);
 }
+
+Card * comprarCarta(Stack *deck){
+    Card * aux = pop(deck);
+    return aux;
+}
