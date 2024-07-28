@@ -12,6 +12,18 @@ void receberCartas(Player *p, Stack *deck){
         p->player_cards[i].rect.w = aux->rect.w;
     }
 }
+void receberCartasDealer(Player *p, Stack *deck){
+    for(int i = 0; i<2; i++){
+        Card *aux = pop(deck);
+        p->player_cards[i].naipe = aux->naipe;
+        if(i == 2)p->player_cards[i].turn = aux->turn;
+        p->player_cards[i].valor = aux->valor;
+        p->player_cards[i].rect.x = aux->rect.x;
+        p->player_cards[i].rect.y = aux->rect.y;
+        p->player_cards[i].rect.h = aux->rect.h;
+        p->player_cards[i].rect.w = aux->rect.w;
+    }
+}
 
 
 
@@ -33,6 +45,25 @@ void atualizarCartasPlayer(){
 
         int naipe = player.player_cards[i].naipe;
         int valor = player.player_cards[i].valor;
+        if(player.player_cards[i].turn ){
+            SDL_RenderCopy(render, texture_baralho, NULL, &player.player_cards[i].rect);
+        }
         SDL_RenderCopy(render, texture_cards[naipe][valor], NULL, &player.player_cards[i].rect);
+    }
+}
+void atualizarCartasDealer(){
+
+    for(int i = 0; i<2; i++){
+        dealer.player_cards[i].rect.x = cartasDealer[i].x;
+        dealer.player_cards[i].rect.y = cartasDealer[i].y;
+        dealer.player_cards[i].rect.w = cartasDealer[i].w;
+        dealer.player_cards[i].rect.h = cartasDealer[i].h;
+
+        int naipe = dealer.player_cards[i].naipe;
+        int valor = dealer.player_cards[i].valor;
+        if(player.player_cards[i].turn ){
+            SDL_RenderCopy(render, texture_baralho, NULL, &dealer.player_cards[i].rect);
+        }
+        SDL_RenderCopy(render, texture_cards[naipe][valor], NULL, &dealer.player_cards[i].rect);
     }
 }

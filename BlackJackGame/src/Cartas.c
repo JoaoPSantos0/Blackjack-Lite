@@ -13,7 +13,7 @@ void embaralhar(Card arr[]){
 void criar_deck(){
     int i = 0, j = 0, cont = 0;
     for(i = 0; i<NAIPE_CARTA; i++){
-        for(j = 0; j<TIPOS_CARTAS; j++){
+        for(j = 1; j<TIPOS_CARTAS; j++){
             deck[cont].rect.h = height_card;
             deck[cont].rect.w = width_card;
             deck[cont].turn = true;

@@ -40,9 +40,15 @@ void carregarGame(){//inicializar as texturas;
     const int dist_borderY = 200;
     int cX = dist_borderX;
     int cY = dist_borderY;
+    for(int j = 0; j<2; j++){
+        cartasDealer[i].h = height_card;
+        cartasDealer[i].w = width_card;
+        cartasDealer[i].x = cX;
+        cartasDealer[i].y = cY;
+        cX += width_card + 20;
+    }
 
     load_texture_deck();
-    load_texture_cartas_dealer();
     load_texture_cartas_player();
     criar_deck();
 
@@ -57,7 +63,7 @@ void carregarGame(){//inicializar as texturas;
     deck_compra.coor_pilha.y = deckCompra.y;
     deck_compra.coor_pilha.w = deckCompra.w;
     deck_compra.coor_pilha.h = deckCompra.h;
-
+    receberCartasDealer(&dealer, &deck_compra);
     receberCartas(&player, &deck_compra); 
 
 }
