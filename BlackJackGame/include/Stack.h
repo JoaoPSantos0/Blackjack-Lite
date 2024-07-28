@@ -22,4 +22,6 @@ void renderizar();
 Stack * push(Stack * stack, Card *card);
 Card * pop(Stack * stack);
 
+void atualizarDeckCompra();
+
 #endif

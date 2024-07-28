@@ -30,7 +30,9 @@ void load_texture_deck(){
 }
 
 void atualizarInterface(){
-    SDL_RenderCopy(render, texture_baralho, NULL, &deckCompra);
+    atualizarCartasDealer();
+    atualizarCartasPlayer();
+    atualizarDeckCompra();
 }
 
 

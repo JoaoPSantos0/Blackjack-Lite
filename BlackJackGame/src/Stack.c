@@ -17,6 +17,11 @@ Stack * push(Stack * stack, Card *card){
     stack->top = novo;
     stack->tam++;
 
+    card->rect.x = stack->coor_pilha.x;
+    card->rect.y = stack->coor_pilha.y;
+    card->rect.w = stack->coor_pilha.w;
+    card->rect.h = stack->coor_pilha.x;
+
     return (Stack*)novo;
 }
 
@@ -34,4 +39,20 @@ Card * pop(Stack *stack){
     free(aux);
 
     return (Card*)remover; 
+}
+
+void atualizarDeckCompra(){
+    if(deck_compra.tam == 0){
+        printf("atualizarDeckCompra: stack vazia");
+        return;
+    }
+    int naipe = deck_compra.top->c->naipe;
+    int valor = deck_compra.top->c->valor;
+
+    deck_compra.top->c->rect.x = deck_compra.coor_pilha.x;
+    deck_compra.top->c->rect.y = deck_compra.coor_pilha.y;
+    deck_compra.top->c->rect.w = deck_compra.coor_pilha.w;
+    deck_compra.top->c->rect.h = deck_compra.coor_pilha.h;
+
+    SDL_RenderCopy(render, texture_baralho, NULL, &deck_compra.top->c->rect);
 }

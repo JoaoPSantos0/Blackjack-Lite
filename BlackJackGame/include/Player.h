@@ -10,7 +10,9 @@ typedef struct {
 
 SDL_Texture * cartas_player[2];
 
-void receberCartas(Player player, double valor_saldo, Stack * deck);
+Player player;
+
+void receberCartas(Player *player, Stack * deck);
 void dobrarAposta();
 void stay();
 void dividirAposta();
