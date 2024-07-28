@@ -37,21 +37,36 @@ void carregarGame(){//inicializar as texturas;
     }
     //distancias do dealer;
     const int dist_borderX = 700;
-    const int dist_borderY = 200;
+    const int dist_borderY = 85;
     int cX = dist_borderX;
     int cY = dist_borderY;
     for(int j = 0; j<2; j++){
-        cartasDealer[i].h = height_card;
-        cartasDealer[i].w = width_card;
-        cartasDealer[i].x = cX;
-        cartasDealer[i].y = cY;
+        cartasDealer[j].h = height_card;
+        cartasDealer[j].w = width_card;
+        cartasDealer[j].x = cX;
+        cartasDealer[j].y = cY;
         cX += width_card + 20;
     }
+    //Distancia botoes
+    const int dis_botX = 500;
+    const int dis_botY = 300;
+    int bX = dis_botX;
+    int bY = dis_botY;
+    botaoCompra.h = 400;
+    botaoCompra.w = 500;
+    botaoCompra.x = bX;
+    botaoCompra.y = bY;
 
+    botaoManter.h = 400;
+    botaoManter.w = 500;
+    botaoManter.x = bX +200;
+    botaoManter.y = bY;
+
+    load_texture_bot();
     load_texture_deck();
     load_texture_cartas_player();
     criar_deck();
-
+    //Coordenada do deck de compra;
     deck_compra.coor_pilha.x = 10; 
     deck_compra.coor_pilha.y = 10; 
     deck_compra.coor_pilha.w = width_card; 
@@ -82,12 +97,22 @@ int main(){
         SDL_SetRenderDrawColor(render, 8, 124, 6, 255);
         SDL_RenderClear(render);
         
-        atualizarInterface();
+        //atualizarInterface();
 
         while(SDL_PollEvent(&e) != 0){
             if(e.type == SDL_QUIT){
                 quit = true;
             }
+            
+            if(SDL_MOUSEBUTTONDOWN == e.type){
+                clicked = true;
+                printf("Cliquei\n");
+            }
+        }
+        atualizarInterface();
+        if(clicked){
+            cliqueiManter();
+            clicked = false;
         }
         SDL_RenderPresent(render);
         SDL_Delay(3);

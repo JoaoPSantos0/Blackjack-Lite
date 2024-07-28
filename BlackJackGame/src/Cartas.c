@@ -13,7 +13,7 @@ void embaralhar(Card arr[]){
 void criar_deck(){
     int i = 0, j = 0, cont = 0;
     for(i = 0; i<NAIPE_CARTA; i++){
-        for(j = 1; j<TIPOS_CARTAS; j++){
+        for(j = 1; j<=TIPOS_CARTAS; j++){
             deck[cont].rect.h = height_card;
             deck[cont].rect.w = width_card;
             deck[cont].turn = true;
@@ -25,6 +25,15 @@ void criar_deck(){
     embaralhar(deck);
     
 }
+void load_texture_bot(){
+    botao_Comprar = carregarTextura("imagens/Background/botCompra.png");
+    botao_Manter = carregarTextura("imagens/Background/botManter.png");
+}
+
+void atualizarBotoes(){
+    SDL_RenderCopy(render, botao_Comprar, NULL, &botaoCompra);
+    SDL_RenderCopy(render, botao_Manter, NULL, &botaoManter);
+}
 void load_texture_deck(){
     texture_baralho = carregarTextura("imagens/Cards/CartaFlopada.png");
 }
@@ -32,6 +41,7 @@ void load_texture_deck(){
 void atualizarInterface(){
     atualizarCartasDealer();
     atualizarCartasPlayer();
+    atualizarBotoes();
     atualizarDeckCompra();
 }
 

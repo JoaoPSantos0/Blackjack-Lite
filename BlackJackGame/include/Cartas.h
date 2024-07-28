@@ -24,6 +24,8 @@ SDL_Texture * texture_cards[NAIPE_CARTA][TIPOS_CARTAS+1];
 SDL_Texture * texture_player_cards[2];
 SDL_Texture * texture_baralho;
 SDL_Texture * texture_background;
+SDL_Texture * botao_Comprar;
+SDL_Texture * botao_Manter;
 
 char caminho_imagens[NAIPE_CARTA][TIPOS_CARTAS + 1][50] = {
 
@@ -38,6 +40,8 @@ Card deck[TOTAL_CARTAS];
 SDL_Rect deckCompra;
 SDL_Rect cartasDealer[2];
 SDL_Rect cartasPlayer[2];
+SDL_Rect botaoCompra;
+SDL_Rect botaoManter;
 
 void criar_deck();
 void embaralhar(Card arr[]);
@@ -45,6 +49,6 @@ void load_texture_naipes();
 void load_texture_deck();
 void load_texture_cartas();
 void atualizarInterface();
-void distribuir_cartas();
-
+void load_texture_bot();
+void atualizarBotoes();
 #endif//_CARTAS_H_

@@ -7,6 +7,7 @@
 #include "Stack.h"
 #include "Player.h"
 #include "Dealer.h"
+#include "Mouse.h"
 
 #include "Interface.h"
 #include <SDL2/SDL.h>
