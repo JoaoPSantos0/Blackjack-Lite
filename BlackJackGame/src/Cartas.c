@@ -52,10 +52,7 @@ void atualizarInterface(){
     atualizarDeckCompra();
 }
 
- Card * comprarCarta(Stack *deck){
-    Card * aux = pop(deck);
-    return aux;
-}
+
 
 void load_texture_lose(){
     youLose = carregarTextura("imagens/Background/Youlose.png");

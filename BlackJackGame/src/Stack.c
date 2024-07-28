@@ -61,3 +61,16 @@ Card * comprarCarta(Stack *deck){
     Card * aux = pop(deck);
     return aux;
 }
+
+void esvaziar_pilha(Player player, Player dealer){ // Zera as pilhas
+    Card * aux =NULL;
+    for(int i = 0; i < 2; i++){ // pilhas de guardar carta 
+        player.player_cards. = aux.;
+    }
+
+    deck->naipe = 0;
+    deck->rect = deckCompra;
+    deck->valor = 0;
+    deck->numero = 0;
+    deck->turn = false;
+}   

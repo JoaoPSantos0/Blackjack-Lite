@@ -15,9 +15,16 @@ void cliqueiManter(){
     }
     
 }
+
+bool clicandoPlayAgain(){
+    if(taClicando(&play_again)){
+        return true;
+    }
+    return false;
+}
 void cliqueiComprar(){
     if(taClicando(&botaoCompra)){
-        
+
     }
 }
 

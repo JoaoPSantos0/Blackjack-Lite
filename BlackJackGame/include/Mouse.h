@@ -13,5 +13,6 @@ void cliqueiManter();
 void cliqueiComprar();
 
 bool taClicando(SDL_Rect* pos);
+bool clicandoPlayAgain();
 
 #endif//_MOUSE_H_

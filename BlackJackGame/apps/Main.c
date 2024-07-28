@@ -64,27 +64,28 @@ void carregarGame(){//inicializar as texturas;
 
     //Tela de vc perdeu
 
-    you_lose.h = 400;
-    you_lose.w = 400;
-    you_lose.x = 400;
-    you_lose.y = 400;
+    you_lose.h = 900;
+    you_lose.w = 900;
+    you_lose.x = 1000;
+    you_lose.y = 100;
 
-    play_again.h = 200;
-    play_again.w = 200;
-    play_again.x = 200;
-    play_again.y = 200;
+    play_again.h = 600;
+    play_again.w = 600;
+    play_again.x = 1000;
+    play_again.y = 400;
 
-    you_win.h = 400;
-    you_win.w = 400;
-    you_win.x = 400;
-    you_win.y = 400;
+    you_win.h = 900;
+    you_win.w = 900;
+    you_win.x = 1000;
+    you_win.y = 100;
     
     /* //Carregar texto saldo
     saldoPlayerRect.h = 300;
     saldoPlayerRect.w = 100;
     saldoPlayerRect.x = X1 + 200;
     saldoPlayerRect.y = Y1; */
-
+    load_texture_lose();
+    load_texture_win();
     load_texture_bot();
     load_texture_deck();
     load_texture_cartas_player();
@@ -118,6 +119,9 @@ int main(){
     }
     carregarGame();
     
+
+    bool ganhou = false;
+    bool perdeu = false;
     while(!quit){
         SDL_SetRenderDrawColor(render, 8, 124, 6, 255);
         SDL_RenderClear(render);
@@ -138,16 +142,30 @@ int main(){
         atualizarInterface();
         if(clicked){
             cliqueiManter();
-            clicked = false;
-            if(somaCartas(player)>somaCartasDealer(dealer)){
-                printf("Voce ganhou\n");
-                atualizar_tela_ganhou();
+
+            
+            if(somaCartas(player)>somaCartasDealer(dealer) && somaCartas(player)<=21){
+                ganhou = true;
             }
-            else {
-                //printf("%d < %d\n", somaCartas);
-                atualizar_tela_perdeu();
-                printf("Voce perde\n");
-                }
+            else if(somaCartas(player)<somaCartasDealer(dealer) && somaCartasDealer(dealer)>21){
+                ganhou = true;
+            }
+            else{
+                perdeu = true;
+            }
+                clicked = false;
+        }
+        if(ganhou){
+            atualizar_tela_ganhou();
+        }
+        else if(perdeu){
+            atualizar_tela_perdeu;
+        }
+        if(clicked){
+            if(clicandoPlayAgain()){
+                carregarGame();
+                printf("Ta clicando\n");
+            }
         }
 
         SDL_RenderPresent(render);
