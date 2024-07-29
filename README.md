@@ -20,6 +20,7 @@ O jogo usa três principais bibliotecas SDL2:
 - SDL2/SDL.h;
 - SDL2/SDL_image.h;
 - SDL2/SDL_ttf.h;
+  
 Para o funcionamento do jogo é necessário a instalação das três bibliotecas através de https://wiki.libsdl.org/SDL2/Installation.
 
 # Instruções básicas para execução:
