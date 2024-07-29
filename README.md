@@ -8,7 +8,7 @@ Uma versão leve do jogo Blackjack, popularmente conhecido como vinte e um (21),
 # Regras:
 
 O objetivo do jogo é chegar aos 21 pontos somando os valores das cartas.
-1) O ás vale apenas 1 ponto;
+1) O ás vale 1 ou 11 pontos, dependendo da situação;
 2) Não existe moeda, portanto aumentar e dividir fichas não é possível;
 3) Existem apenas duas opçoes, comprar uma carta para aumentar os pontos ou manter os que você ja possui;
 4) Caso alguem ultrapasse os 21 pontos, perde;
