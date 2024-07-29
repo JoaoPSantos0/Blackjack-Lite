@@ -13,6 +13,21 @@ O objetivo do jogo é chegar aos 21 pontos somando os valores das cartas.
 3) Caso alguem ultrapasse os 21 pontos, perde;
 4) Caso haja empate, há somente a opção de reiniciar o jogo;
 
+Caso o jogador ganhe, a seguinte tela aparecerá:
+
+![image](https://github.com/user-attachments/assets/db29c588-ad8a-4d8e-ae8d-9c4205ebcc74)
+
+Caso o jogador perca:
+
+![image](https://github.com/user-attachments/assets/96b55580-9d5a-4e95-8fbb-ba507761cd58)
+
+Em caso de empate:
+
+![image](https://github.com/user-attachments/assets/3f48c4a8-134e-4095-bedd-57f2d428d526)
+
+
+
+
 # Funcionamento:
 
 O jogo usa três principais bibliotecas SDL2:
