@@ -37,6 +37,10 @@ void load_texture_bot(){
     botao_Manter = carregarTextura("imagens/Background/botManter.png");
 }
 
+void load_texture_empate(){
+    empate_texture = carregarTextura("imagens/Background/empate.png");
+}
+
 void atualizarBotoes(){
     SDL_RenderCopy(render, botao_Comprar, NULL, &botaoCompra);
     SDL_RenderCopy(render, botao_Manter, NULL, &botaoManter);
@@ -72,6 +76,10 @@ void atualizar_tela_ganhou(){
     SDL_RenderCopy(render, youWin, NULL, &you_win);
     SDL_RenderCopy(render, playAgain, NULL, &play_again);
     
+}
+
+void atualizar_tela_empate(){
+    SDL_RenderCopy(render, empate_texture, NULL, &empate_rect);
 }
  
 

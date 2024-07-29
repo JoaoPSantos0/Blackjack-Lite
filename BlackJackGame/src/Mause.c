@@ -9,11 +9,15 @@ bool taClicando(SDL_Rect * tam){
     return true;
 }
 
-void cliqueiManter(){
+bool cliqueiManter(){
     if(taClicando(&botaoManter)){
-        dealer.player_cards[1].turn = false;
+        return true;
     }
-    
+    if(taClicando(&botaoCompra)){
+        comprarCartaPlayer();
+        return true;
+    }
+    return false;
 }
 
 bool clicandoPlayAgain(){
@@ -24,7 +28,6 @@ bool clicandoPlayAgain(){
 }
 void cliqueiComprar(){
     if(taClicando(&botaoCompra)){
-
     }
 }
 

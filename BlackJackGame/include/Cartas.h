@@ -36,6 +36,7 @@ SDL_Texture * carta_Comprada;
 SDL_Texture * youLose;
 SDL_Texture * youWin;
 SDL_Texture * playAgain;
+SDL_Texture * empate_texture;
 
 char caminho_imagens[NAIPE_CARTA][TIPOS_CARTAS + 1][50] = {
 
@@ -48,8 +49,8 @@ char caminho_imagens[NAIPE_CARTA][TIPOS_CARTAS + 1][50] = {
 Card deck[TOTAL_CARTAS];
 
 SDL_Rect deckCompra;
-SDL_Rect cartasDealer[2];
-SDL_Rect cartasPlayer[2];
+SDL_Rect cartasDealer[2+1];
+SDL_Rect cartasPlayer[2+1];
 SDL_Rect botaoCompra;
 SDL_Rect botaoManter;
 SDL_Rect rectFont;
@@ -59,6 +60,7 @@ SDL_Rect cartaComprada;
 SDL_Rect you_lose;
 SDL_Rect you_win;
 SDL_Rect play_again;
+SDL_Rect empate_rect;
 
 void criar_deck();
 void embaralhar(Card arr[]);
@@ -70,6 +72,8 @@ void load_texture_cartas();
 void atualizarInterface();
 void load_texture_bot();
 void atualizarBotoes();
+void load_texture_empate();
+void atualizar_tela_empate();
 void atualizar_tela_perdeu();
 void atualizar_tela_ganhou();
 #endif//_CARTAS_H_

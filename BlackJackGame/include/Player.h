@@ -19,10 +19,14 @@ Player dealer;
 void receberCartas(Player *player, Stack * deck);
 void receberCartasDealer(Player *p, Stack *deck);
 void dobrarAposta();
-int somaCartas(Player play);
-int somaCartasDealer(Player deal);
+int somaCartas(Player* play);
 void load_texture_cartas_player();
 void atualizarCartasPlayer();
 void atualizarCartasDealer();
+
+void comprarCartaPlayer();
+void comprarCartaDealer();
+
+void dealer_action();
 
 #endif// _PLAYER_H_

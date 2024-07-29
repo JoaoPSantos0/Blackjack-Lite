@@ -30,7 +30,6 @@ SDL_Texture* carregarTextura(const char* image_path){
 
     SDL_Surface* surface = IMG_Load(image_path);
 
-
     texture = SDL_CreateTextureFromSurface(render, surface);
     SDL_FreeSurface(surface);
 

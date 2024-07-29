@@ -25,4 +25,6 @@ Card * pop(Stack * stack);
 Card * comprarCarta(Stack * deck);
 void atualizarDeckCompra();
 
+void deletar_pilha(Stack* s);
+
 #endif

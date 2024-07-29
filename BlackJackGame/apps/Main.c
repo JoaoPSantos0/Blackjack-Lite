@@ -1,9 +1,18 @@
 #include "All.h"
 
-
-//SDL_Rect algo;
-//SDL_Texture* textura = carregar_textura("img.png");
-//SDL_RenderCopy(renderer, textura, NULL, &algo);
+void new_game(){
+    embaralhar(deck);
+    deletar_pilha(&deck_compra);
+    for(int i = 0; i < TOTAL_CARTAS; i++){ 
+        push(&deck_compra, &deck[i]); 
+    } 
+    
+    receberCartasDealer(&dealer, &deck_compra);
+    receberCartas(&player, &deck_compra); 
+    player.player_cards[2].naipe = dealer.player_cards[2].naipe = 0;
+    player.player_cards[2].valor = dealer.player_cards[2].valor = 0;
+    player.player_cards[2].numero = dealer.player_cards[2].numero = 0;
+}
 
 void carregarGame(){//inicializar as texturas;
     //distancias do deck de compra;
@@ -28,7 +37,7 @@ void carregarGame(){//inicializar as texturas;
     int Y1 = border_distanceY;
 
 
-    for(int i = 0; i<2; i++){
+    for(int i = 0; i<3; i++){
         cartasPlayer[i].h = height_card;
         cartasPlayer[i].w = width_card;
         cartasPlayer[i].x = X1;
@@ -40,7 +49,7 @@ void carregarGame(){//inicializar as texturas;
     const int dist_borderY = 85;
     int cX = dist_borderX;
     int cY = dist_borderY;
-    for(int j = 0; j<2; j++){
+    for(int j = 0; j<3; j++){
         cartasDealer[j].h = height_card;
         cartasDealer[j].w = width_card;
         cartasDealer[j].x = cX;
@@ -50,16 +59,16 @@ void carregarGame(){//inicializar as texturas;
     //Distancia botoes
     const int dis_botX = 500;
     const int dis_botY = 300;
-    int bX = dis_botX;
-    int bY = dis_botY;
-    botaoCompra.h = 400;
-    botaoCompra.w = 500;
+    int bX = dis_botX + 100;
+    int bY = dis_botY + 100;
+    botaoCompra.h = 120;
+    botaoCompra.w = 200;
     botaoCompra.x = bX;
     botaoCompra.y = bY;
 
-    botaoManter.h = 400;
-    botaoManter.w = 500;
-    botaoManter.x = bX +200;
+    botaoManter.h = 110;
+    botaoManter.w = 200;
+    botaoManter.x = bX + 250;
     botaoManter.y = bY;
 
     //Tela de vc perdeu
@@ -69,21 +78,27 @@ void carregarGame(){//inicializar as texturas;
     you_lose.x = 1000;
     you_lose.y = 100;
 
-    play_again.h = 600;
-    play_again.w = 600;
-    play_again.x = 1000;
+    play_again.h = 100;
+    play_again.w = 150;
+    play_again.x = 1100;
     play_again.y = 400;
 
     you_win.h = 900;
     you_win.w = 900;
     you_win.x = 1000;
     you_win.y = 100;
+
+    empate_rect.h = 900;
+    empate_rect.w = 900;
+    empate_rect.x = 1000;
+    empate_rect.y = 100;
     
     /* //Carregar texto saldo
     saldoPlayerRect.h = 300;
     saldoPlayerRect.w = 100;
     saldoPlayerRect.x = X1 + 200;
     saldoPlayerRect.y = Y1; */
+    load_texture_empate();
     load_texture_lose();
     load_texture_win();
     load_texture_bot();
@@ -91,24 +106,13 @@ void carregarGame(){//inicializar as texturas;
     load_texture_cartas_player();
     criar_deck();
     //Coordenada do deck de compra;
-    deck_compra.coor_pilha.x = 10; 
-    deck_compra.coor_pilha.y = 10; 
-    deck_compra.coor_pilha.w = width_card; 
-    deck_compra.coor_pilha.h = height_card; 
-    for(int i = 0; i < TOTAL_CARTAS; i++){ 
-        push(&deck_compra, &deck[i]); 
-    } 
     deck_compra.coor_pilha.x = deckCompra.x;
     deck_compra.coor_pilha.y = deckCompra.y;
     deck_compra.coor_pilha.w = deckCompra.w;
     deck_compra.coor_pilha.h = deckCompra.h;
-    receberCartasDealer(&dealer, &deck_compra);
-    receberCartas(&player, &deck_compra); 
-    printf("%d\n", somaCartas(player));
-    printf("%d\n", somaCartasDealer(dealer));
-
+    
+    new_game();
 }
-
 
 int main(){
 
@@ -122,6 +126,7 @@ int main(){
 
     bool ganhou = false;
     bool perdeu = false;
+    bool empate = false;
     while(!quit){
         SDL_SetRenderDrawColor(render, 8, 124, 6, 255);
         SDL_RenderClear(render);
@@ -136,37 +141,48 @@ int main(){
             
             if(SDL_MOUSEBUTTONDOWN == e.type){
                 clicked = true;
-                //printf("Cliquei\n");
             }
         }
         atualizarInterface();
         if(clicked){
-            cliqueiManter();
+            if(!ganhou && !perdeu && cliqueiManter()){
+                dealer.player_cards[2].numero = 0;
+                dealer_action();
+                dealer.player_cards[1].turn = false;
 
-            
-            if(somaCartas(player)>somaCartasDealer(dealer) && somaCartas(player)<=21){
-                ganhou = true;
+                if(somaCartas(&player)>somaCartas(&dealer) && somaCartas(&player)<=21){
+                    ganhou = true;
+                }
+                else if(somaCartas(&player)<somaCartas(&dealer) && somaCartas(&dealer)>21){
+                    ganhou = true;
+                }
+                else if(somaCartas(&player)>somaCartas(&dealer) && somaCartas(&player)>21 ){
+                    perdeu = true;
+                }
+                else if(somaCartas(&player)<somaCartas(&dealer) && somaCartas(&dealer)<=21){
+                    perdeu = true;
+                }
+                else if(somaCartas(&player)==somaCartas(&dealer)){
+
+                }
             }
-            else if(somaCartas(player)<somaCartasDealer(dealer) && somaCartasDealer(dealer)>21){
-                ganhou = true;
+
+            if(clicandoPlayAgain() && (ganhou || perdeu)){
+                new_game();
+                ganhou = perdeu = empate = false;
             }
-            else{
-                perdeu = true;
-            }
-                clicked = false;
+            clicked = false;
         }
         if(ganhou){
             atualizar_tela_ganhou();
         }
         else if(perdeu){
-            atualizar_tela_perdeu;
+            atualizar_tela_perdeu();
         }
-        if(clicked){
-            if(clicandoPlayAgain()){
-                carregarGame();
-                printf("Ta clicando\n");
-            }
+        else if(empate){
+            atualizar_tela_empate();
         }
+
 
         SDL_RenderPresent(render);
         SDL_Delay(3);

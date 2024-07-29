@@ -23,9 +23,6 @@ bool InicializarSDL();
 
 SDL_Texture* carregarTextura(const char* image_path);
 
-
-
-
 bool is_clicking_on_rect(SDL_Rect* r);
 
 //--------------------Fontes-----------------------

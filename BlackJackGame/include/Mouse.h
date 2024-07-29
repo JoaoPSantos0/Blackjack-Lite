@@ -8,7 +8,7 @@ bool clicked = false;
 Stack mouse_list; 
 
 
-void cliqueiManter();
+bool cliqueiManter();
 
 void cliqueiComprar();
 

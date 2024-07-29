@@ -43,7 +43,7 @@ void load_texture_cartas_player(){
 
 void atualizarCartasPlayer(){
 
-    for(int i = 0; i<2; i++){
+    for(int i = 0; i<3; i++){
         player.player_cards[i].rect.x = cartasPlayer[i].x;
         player.player_cards[i].rect.y = cartasPlayer[i].y;
         player.player_cards[i].rect.w = cartasPlayer[i].w;
@@ -56,10 +56,11 @@ void atualizarCartasPlayer(){
         }
         SDL_RenderCopy(render, texture_cards[naipe][valor], NULL, &player.player_cards[i].rect);
     }
+
 }
 void atualizarCartasDealer(){
 
-    for(int i = 0; i<2; i++){
+    for(int i = 0; i<3; i++){
         dealer.player_cards[i].rect.x = cartasDealer[i].x;
         dealer.player_cards[i].rect.y = cartasDealer[i].y;
         dealer.player_cards[i].rect.w = cartasDealer[i].w;
@@ -67,6 +68,7 @@ void atualizarCartasDealer(){
 
         int naipe = dealer.player_cards[i].naipe;
         int valor = dealer.player_cards[i].valor;
+        if(valor == 0) continue;
         if(dealer.player_cards[i].turn ){
             SDL_RenderCopy(render, texture_baralho, NULL, &dealer.player_cards[i].rect);
         }
@@ -76,17 +78,38 @@ void atualizarCartasDealer(){
     }
 }
 
-int somaCartas(Player play){
-    printf("%d %d\n", play.player_cards[0].numero ,play.player_cards[1].numero);
-    
-    play.soma = play.player_cards[0].numero + play.player_cards[1].numero;
-    int soma = play.soma;
-    return soma;
-}
-int somaCartasDealer(Player deal){
-    printf("%d %d\n", deal.player_cards[0].numero , deal.player_cards[1].numero);
-    deal.soma = deal.player_cards[0].numero + deal.player_cards[1].numero;
-    int soma = deal.soma;
+int somaCartas(Player* play){    
+    play->soma = play->player_cards[0].numero + play->player_cards[1].numero + play->player_cards[2].numero;
+    int soma = play->soma;
     return soma;
 }
 
+void comprarCartaPlayer(){
+    Card* c = comprarCarta(&deck_compra);
+    player.player_cards[2].naipe = c->naipe;
+    player.player_cards[2].numero = c->numero;
+    player.player_cards[2].valor = c->valor;
+    player.player_cards[2].turn = false;
+}
+void comprarCartaDealer(){
+    Card* c = comprarCarta(&deck_compra);
+    dealer.player_cards[2].naipe = c->naipe;
+    dealer.player_cards[2].numero = c->numero;
+    dealer.player_cards[2].valor = c->valor;
+    dealer.player_cards[2].turn = false;
+}
+
+void dealer_action(){
+    if(somaCartas(&dealer) >= 16){
+        return;
+    }
+    if(somaCartas(&dealer) <= 11){
+        comprarCartaDealer();
+        return;
+    }
+
+    int aleatorio = rand() % 2;
+    if(aleatorio % 2 == 0){
+        comprarCartaDealer();
+    }
+}
