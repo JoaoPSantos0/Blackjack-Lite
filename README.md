@@ -5,6 +5,15 @@ Uma versão leve do jogo Blackjack, popularmente conhecido como vinte e um (21),
 
 ![image](https://github.com/user-attachments/assets/c090245e-f655-4685-ab07-1dc851bab66c)
 
+# Regras:
+
+O objetivo do jogo é chegar aos 21 pontos somando os valores das cartas.
+1) O ás vale apenas 1 ponto;
+2) Não existe moeda, portanto aumentar e dividir fichas não é possível;
+3) Existem apenas duas opçoes, comprar uma carta para aumentar os pontos ou manter os que você ja possui;
+4) Caso alguem ultrapasse os 21 pontos, perde;
+5) Caso haja empate, há somente a opção de reiniciar o jogo;
+
 # Funcionamento:
 
 O jogo usa três principais bibliotecas SDL2:
