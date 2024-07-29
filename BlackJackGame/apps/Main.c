@@ -12,6 +12,8 @@ void new_game(){
     player.player_cards[2].naipe = dealer.player_cards[2].naipe = 0;
     player.player_cards[2].valor = dealer.player_cards[2].valor = 0;
     player.player_cards[2].numero = dealer.player_cards[2].numero = 0;
+    zerar_carta_animacao();
+    zerar_carta_animacao2();
 }
 
 void carregarGame(){//inicializar as texturas;
@@ -92,6 +94,9 @@ void carregarGame(){//inicializar as texturas;
     empate_rect.w = 900;
     empate_rect.x = 1000;
     empate_rect.y = 100;
+
+    carta_animacao.h = carta_animacao_player.h = height_card;
+    carta_animacao.w = carta_animacao_player.w = width_card;
     
     /* //Carregar texto saldo
     saldoPlayerRect.h = 300;
@@ -145,7 +150,7 @@ int main(){
         }
         atualizarInterface();
         if(clicked){
-            if(!ganhou && !perdeu && cliqueiManter()){
+            if(!ganhou && !perdeu && !empate && cliqueiManter()){
                 dealer.player_cards[2].numero = 0;
                 dealer_action();
                 dealer.player_cards[1].turn = false;
@@ -163,29 +168,49 @@ int main(){
                     perdeu = true;
                 }
                 else if(somaCartas(&player)==somaCartas(&dealer)){
-
+                    empate = true;
                 }
             }
 
-            if(clicandoPlayAgain() && (ganhou || perdeu)){
+            if(clicandoPlayAgain() && (ganhou || perdeu || empate)){
                 new_game();
                 ganhou = perdeu = empate = false;
             }
             clicked = false;
         }
-        if(ganhou){
-            atualizar_tela_ganhou();
+
+        if(animacao){
+            if(animacaoDealer()){
+                animacao = false;
+                zerar_carta_animacao();
+            }
         }
-        else if(perdeu){
-            atualizar_tela_perdeu();
+
+        if(animacao2 && !animacao){
+            if(animacaoPlayer()){
+                animacao2 = false;
+                zerar_carta_animacao2();
+            }
         }
-        else if(empate){
-            atualizar_tela_empate();
+
+
+        if(!animacao && !animacao2){
+            zerar_carta_animacao();
+            if(ganhou){
+                atualizar_tela_ganhou();
+            }
+            else if(perdeu){
+                atualizar_tela_perdeu();
+            }
+            else if(empate){
+                atualizar_tela_empate();
+            }
         }
+
 
 
         SDL_RenderPresent(render);
-        SDL_Delay(3);
+        // SDL_Delay(1);
     }
     SDL_Quit();
 }

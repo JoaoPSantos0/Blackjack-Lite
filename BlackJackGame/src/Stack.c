@@ -55,6 +55,8 @@ void atualizarDeckCompra(){
     deck_compra.top->c->rect.h = deck_compra.coor_pilha.h;
 
     SDL_RenderCopy(render, texture_baralho, NULL, &deck_compra.top->c->rect);
+    SDL_RenderCopy(render, texture_baralho, NULL, &carta_animacao);
+    SDL_RenderCopy(render, texture_baralho, NULL, &carta_animacao_player);
 }
 
 Card * comprarCarta(Stack *deck){

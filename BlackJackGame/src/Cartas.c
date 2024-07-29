@@ -22,6 +22,9 @@ void criar_deck(){
             if(j>=10){
                 deck[cont].numero = 10;
             }
+            else if(j==1){
+                deck[cont].numero = 11;
+            }
             else{
                 deck[cont].numero = j;
             }
@@ -54,6 +57,7 @@ void atualizarInterface(){
     atualizarCartasPlayer();
     atualizarBotoes();
     atualizarDeckCompra();
+    
 }
 
 
@@ -80,6 +84,15 @@ void atualizar_tela_ganhou(){
 
 void atualizar_tela_empate(){
     SDL_RenderCopy(render, empate_texture, NULL, &empate_rect);
+    SDL_RenderCopy(render, playAgain, NULL, &play_again);
 }
  
+void zerar_carta_animacao(){
+    carta_animacao.x = deck_compra.coor_pilha.x;
+    carta_animacao.y = deck_compra.coor_pilha.y;
+}
 
+void zerar_carta_animacao2(){
+    carta_animacao_player.x = deck_compra.coor_pilha.x;
+    carta_animacao_player.y = deck_compra.coor_pilha.y;
+}

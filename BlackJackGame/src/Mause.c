@@ -15,6 +15,8 @@ bool cliqueiManter(){
     }
     if(taClicando(&botaoCompra)){
         comprarCartaPlayer();
+        carta_animacao.x = deck_compra.coor_pilha.x;
+        carta_animacao.y = deck_compra.coor_pilha.y;
         return true;
     }
     return false;
@@ -30,4 +32,6 @@ void cliqueiComprar(){
     if(taClicando(&botaoCompra)){
     }
 }
+
+
 

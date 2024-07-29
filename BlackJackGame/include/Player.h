@@ -16,6 +16,11 @@ Player player;
 
 Player dealer;
 
+bool animacao = false;
+bool animacao2 = false;
+SDL_Rect carta_animacao;
+SDL_Rect carta_animacao_player;
+
 void receberCartas(Player *player, Stack * deck);
 void receberCartasDealer(Player *p, Stack *deck);
 void dobrarAposta();
@@ -26,6 +31,8 @@ void atualizarCartasDealer();
 
 void comprarCartaPlayer();
 void comprarCartaDealer();
+bool animacaoDealer();
+bool animacaoPlayer();
 
 void dealer_action();
 

@@ -44,6 +44,7 @@ void load_texture_cartas_player(){
 void atualizarCartasPlayer(){
 
     for(int i = 0; i<3; i++){
+        if(animacao2 && i == 2) break;
         player.player_cards[i].rect.x = cartasPlayer[i].x;
         player.player_cards[i].rect.y = cartasPlayer[i].y;
         player.player_cards[i].rect.w = cartasPlayer[i].w;
@@ -61,6 +62,7 @@ void atualizarCartasPlayer(){
 void atualizarCartasDealer(){
 
     for(int i = 0; i<3; i++){
+        // if(animacao && i == 2) break;
         dealer.player_cards[i].rect.x = cartasDealer[i].x;
         dealer.player_cards[i].rect.y = cartasDealer[i].y;
         dealer.player_cards[i].rect.w = cartasDealer[i].w;
@@ -80,19 +82,30 @@ void atualizarCartasDealer(){
 
 int somaCartas(Player* play){    
     play->soma = play->player_cards[0].numero + play->player_cards[1].numero + play->player_cards[2].numero;
+    for(int j = 0; j<3; j++){
+        if(play->player_cards[j].valor == 1 && play->soma >21){
+            play->soma -= 10;
+        }
+            
+    }
     int soma = play->soma;
     return soma;
 }
 
 void comprarCartaPlayer(){
     Card* c = comprarCarta(&deck_compra);
+    animacao2 = true;
     player.player_cards[2].naipe = c->naipe;
     player.player_cards[2].numero = c->numero;
     player.player_cards[2].valor = c->valor;
     player.player_cards[2].turn = false;
 }
+
+int dbg = 0;
 void comprarCartaDealer(){
     Card* c = comprarCarta(&deck_compra);
+    animacao = true;
+    printf("dealer comprou! %d\n", dbg++);
     dealer.player_cards[2].naipe = c->naipe;
     dealer.player_cards[2].numero = c->numero;
     dealer.player_cards[2].valor = c->valor;
@@ -112,4 +125,33 @@ void dealer_action(){
     if(aleatorio % 2 == 0){
         comprarCartaDealer();
     }
+}
+
+bool animacaoDealer(){
+    if(carta_animacao.x < dealer.player_cards[2].rect.x){
+        carta_animacao.x++;
+        return false;
+    }
+
+    if(carta_animacao.y > dealer.player_cards[2].rect.y){
+        carta_animacao.y--;
+        return false;
+    }
+
+
+    return true;
+}
+
+bool animacaoPlayer(){
+    if(carta_animacao_player.x < player.player_cards[2].rect.x){
+        carta_animacao_player.x++;
+        return false;
+    }
+
+    if(carta_animacao_player.y < player.player_cards[2].rect.y){
+        carta_animacao_player.y++;
+        return false;
+    }
+
+    return true;
 }

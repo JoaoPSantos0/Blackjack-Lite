@@ -76,4 +76,8 @@ void load_texture_empate();
 void atualizar_tela_empate();
 void atualizar_tela_perdeu();
 void atualizar_tela_ganhou();
+
+void zerar_carta_animacao();
+void zerar_carta_animacao2();
+
 #endif//_CARTAS_H_
