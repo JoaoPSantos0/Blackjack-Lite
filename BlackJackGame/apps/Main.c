@@ -95,8 +95,11 @@ void carregarGame(){//inicializar as texturas;
     empate_rect.x = 1000;
     empate_rect.y = 100;
 
-    carta_animacao.h = carta_animacao_player.h = height_card;
-    carta_animacao.w = carta_animacao_player.w = width_card;
+    carta_animacao.h = height_card;
+    carta_animacao.w = width_card;
+    
+    carta_animacao_player.w = width_card;
+    carta_animacao_player.h = height_card;
     
     /* //Carregar texto saldo
     saldoPlayerRect.h = 300;
@@ -136,8 +139,6 @@ int main(){
         SDL_SetRenderDrawColor(render, 8, 124, 6, 255);
         SDL_RenderClear(render);
         
-        //atualizarInterface();
-
         while(SDL_PollEvent(&e) != 0){
             SDL_GetMouseState(&mouseX, &mouseY);
             if(e.type == SDL_QUIT){
@@ -148,6 +149,7 @@ int main(){
                 clicked = true;
             }
         }
+
         atualizarInterface();
         if(clicked){
             if(!ganhou && !perdeu && !empate && cliqueiManter()){
@@ -195,7 +197,6 @@ int main(){
 
 
         if(!animacao && !animacao2){
-            zerar_carta_animacao();
             if(ganhou){
                 atualizar_tela_ganhou();
             }
@@ -210,7 +211,7 @@ int main(){
 
 
         SDL_RenderPresent(render);
-        // SDL_Delay(1);
+        SDL_Delay(1);
     }
     SDL_Quit();
 }

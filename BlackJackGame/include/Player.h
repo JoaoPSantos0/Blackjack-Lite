@@ -16,10 +16,10 @@ Player player;
 
 Player dealer;
 
-bool animacao = false;
-bool animacao2 = false;
-SDL_Rect carta_animacao;
-SDL_Rect carta_animacao_player;
+bool animacao = true;
+bool animacao2 = true;
+SDL_Rect carta_animacao = {0, 0, width_card, height_card};
+SDL_Rect carta_animacao_player = {0, 0, width_card, height_card};;
 
 void receberCartas(Player *player, Stack * deck);
 void receberCartasDealer(Player *p, Stack *deck);

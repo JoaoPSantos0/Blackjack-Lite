@@ -60,8 +60,6 @@ void atualizarInterface(){
     
 }
 
-
-
 void load_texture_lose(){
     youLose = carregarTextura("imagens/Background/Youlose.png");
     playAgain = carregarTextura("imagens/Background/playagain.png");
@@ -90,9 +88,11 @@ void atualizar_tela_empate(){
 void zerar_carta_animacao(){
     carta_animacao.x = deck_compra.coor_pilha.x;
     carta_animacao.y = deck_compra.coor_pilha.y;
+    animacao = false;
 }
 
 void zerar_carta_animacao2(){
     carta_animacao_player.x = deck_compra.coor_pilha.x;
     carta_animacao_player.y = deck_compra.coor_pilha.y;
+    animacao2 = false;
 }

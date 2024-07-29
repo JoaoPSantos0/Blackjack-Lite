@@ -62,7 +62,7 @@ void atualizarCartasPlayer(){
 void atualizarCartasDealer(){
 
     for(int i = 0; i<3; i++){
-        // if(animacao && i == 2) break;
+        if(animacao && i == 2) break;
         dealer.player_cards[i].rect.x = cartasDealer[i].x;
         dealer.player_cards[i].rect.y = cartasDealer[i].y;
         dealer.player_cards[i].rect.w = cartasDealer[i].w;
@@ -101,18 +101,16 @@ void comprarCartaPlayer(){
     player.player_cards[2].turn = false;
 }
 
-int dbg = 0;
 void comprarCartaDealer(){
     Card* c = comprarCarta(&deck_compra);
     animacao = true;
-    printf("dealer comprou! %d\n", dbg++);
     dealer.player_cards[2].naipe = c->naipe;
     dealer.player_cards[2].numero = c->numero;
     dealer.player_cards[2].valor = c->valor;
     dealer.player_cards[2].turn = false;
 }
 
-void dealer_action(){
+void dealer_action(){    
     if(somaCartas(&dealer) >= 16){
         return;
     }
@@ -125,6 +123,7 @@ void dealer_action(){
     if(aleatorio % 2 == 0){
         comprarCartaDealer();
     }
+
 }
 
 bool animacaoDealer(){
