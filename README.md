@@ -55,5 +55,8 @@ O projeto é dividido em sete pastas principais:
 6) src: onde estão os arquivos ".c";
 7) Um arquivo Makefile;
 
+# Link para os slides;
+
+https://www.canva.com/design/DAGMTB93gW4/uFPJO9BSCmwpuVamPUy2yQ/edit
 
 
